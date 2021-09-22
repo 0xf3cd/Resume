@@ -65,7 +65,7 @@
 
   * 编写了 Python 程序以：1. 执行自动化训练，每种神经网络架构（CNN，AlexNet，LSTM，ResNet，及 DenseNet）会在不同的集群大小（4/8/16）和各种超参数组合下进行训练；2. 记录本地模型在每一个 epoch 中的训练时间、loss 等评价数据；3. 定期地使用测试集评估全局模型的 accuracy
 
-  * 以 Local-SGD 算法为 baseline，LOSP 达到了：1. 大部分模型**收敛时间缩短为原来的约 50%** （且达到同样甚至更好的 accuracy）；2、 **更高的 GPU 利用率**（几乎没有空闲等待时间）；3. **显著降低的通信代价**（需要发送和接受的数据减少，同步过程的次数也减少）
+  * 以 Local-SGD 算法为 baseline，LOSP 达到了：1. 大部分模型**收敛时间缩短为原来的约 50%** （且达到同样甚至更好的 accuracy）；2. **更高的 GPU 利用率**（几乎没有空闲等待时间）；3. **显著降低的通信代价**（需要发送和接受的数据减少，同步过程的次数也减少）
 
   * 发表论文：H. Wang, Z. Qu, S. Guo, N. Wang, R. Li and W. Zhuang, ”LOSP: Overlap Synchronization Parallel With Local Compensation for Fast Distributed Training,” in IEEE Journal on Selected Areas in Communications, vol. 39, no. 8, pp. 2541-2557, Aug. 2021, doi: 10.1109/JSAC.2021.3087272.
 
