@@ -1,6 +1,6 @@
 # Ningqi Wang
 
-> Email: nq.maigre@gmail.com | LinkedIn: https://www.linkedin.com/in/ningqi-wang
+> Email: nq.maigre@gmail.com  LinkedIn: https://www.linkedin.com/in/ningqi-wang
 >
 > English Ver.: https://drive.google.com/file/d/1xYoTwvz8s6pVGqTGwRoXwsvuOyOlt6ME
 
@@ -20,10 +20,10 @@
 
 ## 工作经历
 
-* __Apple__ | GPU System Software Engineer Intern `2021.05 - 2021.08`
+* __Apple__ - GPU System Software Engineer Intern `2021.05 - 2021.08`
   * 与同事合作构建了一条 **color transform pipeline**，将**虚拟化 GPU** 的图形渲染请求调度到物理 GPU 上执行
   * 开发了内部使用的 APIs，并使用 *Metal* 构建了**高性能** *GPU shaders* 以支撑 guest OS 中的视觉无障碍功能
-* __Autodesk__ | Software Engineer Intern `2019.09-2020.02`
+* __Autodesk__ - Software Engineer Intern `2019.09-2020.02`
   * 将 Windows 版本的 AutoCAD（一个由数十万行 C/C++ 代码构成的项目）从 *MSVC* 迁移到 *LLVM* 平台
   * 升级内部的 *CI/CD* 平台，对由 LLVM 生成的 Windows 版本 AutoCAD builds 进行**自动化测试**
   * 开发了一些 *Clang* 插件，用以分析源代码文件的 dependency，并检测冗余代码
