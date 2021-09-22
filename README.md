@@ -1,8 +1,7 @@
 # Ningqi Wang
 
-> Email: nq.maigre@gmail.com  LinkedIn: https://www.linkedin.com/in/ningqi-wang
+> nq.maigre@gmail.com  [LinkedIn](https://www.linkedin.com/in/ningqi-wang)  [English Ver. Resume](https://drive.google.com/file/d/1xYoTwvz8s6pVGqTGwRoXwsvuOyOlt6ME)
 >
-> English Ver.: https://drive.google.com/file/d/1xYoTwvz8s6pVGqTGwRoXwsvuOyOlt6ME
 
 
 
