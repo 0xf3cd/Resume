@@ -59,14 +59,14 @@
   
   * 提出了一个**通用的同步机制**（即 LOSP，基于 *Parameter Server* 模型），在一个分布式 GPU 集群上加速神经网络的训练过程（通过使用 local compensation 及重叠计算和通信过程以减少同步过程的代价）
   
-  * 实现了 LOSP（通过重载 *PyTorch* 在参数训练时的默认行为来实现）- 运行在 workers 上的状态机将控制 RPC 调用，进而操作本地或全局的神经网络参数；也实现了其他 3 种分布式训练算法以供比较
+  * 实现了 LOSP（通过重载 *PyTorch* 训练和更新参数时的默认行为来实现）- 运行在 workers 上的状态机将控制 RPC 调用，进而操作本地或全局的神经网络参数；也实现了其他 3 种分布式训练算法以供比较
   
   * 编写了 Python 程序以：
   
-    * 1. 执行自动化训练，每种神经网络架构（CNN，AlexNet，LSTM，ResNet，及 DenseNet）会在不同的集群大小（4/8/16）和各种超参数组合下进行训练
-    * 2. 记录本地模型在每一个 epoch 中的训练时间、loss 等评价数据
+    * 1. 执行自动化训练，每种神经网络架构（CNN/AlexNet/LSTM/ResNet/DenseNet）会在不同的集群大小（4/8/16）和各种超参数组合下进行训练
+    * 2. 从 workers 采集各个本地模型在每一个 epoch 中的训练时间、loss 等评价数据
   
-    * 3. 定期地评估全局模型的在测试集上的 accuracy
+    * 3. 定期评估全局模型的在测试集上的 accuracy
   
   * 以 Local-SGD 算法为 baseline，LOSP 达到了：
   
