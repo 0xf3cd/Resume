@@ -63,9 +63,9 @@
 
   * 实现了 LOSP（通过重载 *PyTorch* 在参数训练时的行为以完成）- 运行在 workers 上的状态机将控制 RPC 调用，并以此操作本地或全局的神经网络参数；也实现了其他 3 种分布式训练算法以供之后的比较
 
-  * 编写了 Python 程序以：1. 执行自动化训练，每种神经网络（CNN，AlexNet，LSTM，ResNet，及 DenseNet）会在不同的集群大小（4/8/16）和各种超参数组合下进行训练；2. 记录本地模型在每一个 epoch 中的训练时间、loss 等评价数据；3. 定期地使用测试集评估全局模型的 accuracy
+  * 编写了 Python 程序以：1. 执行自动化训练，每种神经网络架构（CNN，AlexNet，LSTM，ResNet，及 DenseNet）会在不同的集群大小（4/8/16）和各种超参数组合下进行训练；2. 记录本地模型在每一个 epoch 中的训练时间、loss 等评价数据；3. 定期地使用测试集评估全局模型的 accuracy
 
-  * 以 Local-SGD 算法为 baseline，LOSP 达到了：1. 大部分**模型收敛时间缩短为原来的约 50%** （且达到同样甚至更好的 accuracy）；2、 **更高的 GPU 利用率**（几乎没有空闲等待时间）；3. **显著降低的通信代价**（需要发送和接受的数据减少，同步过程的次数也减少）
+  * 以 Local-SGD 算法为 baseline，LOSP 达到了：1. 大部分模型**收敛时间缩短为原来的约 50%** （且达到同样甚至更好的 accuracy）；2、 **更高的 GPU 利用率**（几乎没有空闲等待时间）；3. **显著降低的通信代价**（需要发送和接受的数据减少，同步过程的次数也减少）
 
   * 发表论文：H. Wang, Z. Qu, S. Guo, N. Wang, R. Li and W. Zhuang, ”LOSP: Overlap Synchronization Parallel With Local Compensation for Fast Distributed Training,” in IEEE Journal on Selected Areas in Communications, vol. 39, no. 8, pp. 2541-2557, Aug. 2021, doi: 10.1109/JSAC.2021.3087272.
 
@@ -73,12 +73,13 @@
 
 * **计算机系统和基础架构项目**
 
-  * **实时操作系统内核**：一个基本的内核，支持多线程、抢占调度、上下文切换、优先级调度、互斥锁
+  * **实时操作系统内核**：一个基本内核，支持多线程、抢占调度、上下文切换、优先级调度、互斥锁
   * **类 UNIX 文件系统**：一个简化版本的 UNIX 文件系统，带有读写缓存
   * **分布式文件系统**：使用读写锁构建的一个分布式文件系统，支持单写者和多读者
   * **动态内存分配机制**：即 **malloc** 及 **free**
   * **Linux Shell**：一个简易版本的 shell 程序，支持前后台任务切换、信号处理、I/O 重定向
   * **多线程网络代理服务器**：一个带有同步 cache 以储存 web objects
+  * **无锁队列**：使用 C++ 构建了一个 CAS 无锁队列
   * **RPC 框架**：使用 *Golang* 构建的一个通用的 RPC 框架
   * **Raft 公式算法**：使用 Golang 复现该算法
   * **编译器**：一系列软件：1. 根据输入的文法动态生成 LL(1) 或 SLR(1) parser（即 parser generator）；2. 通过 parser 分析一个类 C 语言，得到 AST 后转化为中间代码；3. 对于中间代码进行**处理器无关优化**及**窥孔优化**；4. 生成可在 x86 处理器上运行的汇编代码
