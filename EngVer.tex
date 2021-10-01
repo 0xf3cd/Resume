@@ -1,0 +1,358 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Author : Leslie Cheng, 0xf3cd
+% License : MIT
+%-------------------------------------
+
+\documentclass[letterpaper,10pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage[xetex]{hyperref}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+% \usepackage{blindtext}
+% \usepackage{multicol}
+% \usepackage{mathtools}
+% \usepackage{svg}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Ningqi Wang}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/ningqi-wang/}
+\def \linkedintext {/ningqi-wang}
+
+\def \phoneicon {\faPhone}
+\def \phonetext {+1-412-567-7252}
+
+\def \emailicon {\faEnvelopeO}
+\def \emaillink {mailto:nq.maigre@gmail.com}
+\def \emailtext {nq.maigre@gmail.com}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/0xf3cd}
+\def \githubtext {/0xf3cd}
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0a47b0} % 0D47A1 921010 0a680a
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+\newcommand{\mycolortext}[1]{{\color{secondary}#1}}
+
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt} \emailtext}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=secondary,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+% Different styles of the title
+% \renewcommand{\section}[2]{
+%   \vspace{4pt}
+%   \colorbox{secondary}{
+%     \color{white}\raggedbottom\normalsize\rlap{\textbf{{#1}{\hspace{7pt}#2}}}\hspace{\linewidth}\hspace{-2\fboxsep}
+%   }
+%   \vspace{-8pt}
+% }
+
+% \renewcommand{\section}[2]{\vspace{5pt}
+%   \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+% }
+
+\renewcommand{\section}[2]{
+  \vspace{4pt}
+  {
+    \color{secondary}\large\textbf{{#1}{\hspace{4pt}#2}}
+    \hrulefill
+  }
+  \vspace{-2pt}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=0mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=6mm,before=\setlength{\rightmargin}{3pt}]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+\newcommand{\resumeEntryMyOneLineTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.995\textwidth}{X@{\hspace{60pt}}r}
+      {\textbf{\color{primary}#1} $|$ \color{accent}\small\emph{#3}} & {\firabook\color{accent}\small#4 $|$ \textit{\color{accent}\small#2}} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+\newcommand{\resumeEntryMyTD}[3]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      {\textbf{\color{primary}#1} $|$ {\color{accent}\small{\emph{#2}}}} & {\firabook\color{accent}\small#3} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[4]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{25}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#1} & {\small#3} \\
+        {\small#2} & {\small#4}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\phone}{\email}{\linkedin}{\github} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{\faLeanpub}{Education} % faGraduationCap faBook faUniversity faLeanpub
+
+  \resumeEntryStart
+    \resumeEntryMyOneLineTSDL
+      {Carnegie Mellon University}{Aug. 2020 -- Dec. 2021}
+      {M.S. in Information Networking; GPA: 3.50/4.00}{Pittsburgh, PA}
+      \resumeItemListStart
+        \resumeItem 
+          {Teaching Assistant for course 17-681 Java for Application Programmers in Spring 2021 and Fall 2021}
+      \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \vspace{-6pt}
+  
+  \resumeEntryStart
+    \resumeEntryMyOneLineTSDL
+      {Tongji University}{Sept. 2015 -- Jul. 2020}
+      {B.E. in Computer Science and Technology; GPA: 91.37/100}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem 
+          {Graduated with Honor: \mycolortext{Shanghai Outstanding Graduate Award}}
+        \resumeItem 
+          {Tongji Excellent Undergraduate Scholarship in 2017 and 2018 (Ranking 14/177 and \mycolortext{1/164} respectively)}
+      \resumeItemListEnd
+  \resumeEntryEnd
+  
+ 
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{\faBuildingO}{Experience} % faBriefcase, faSuitcase
+
+  \resumeEntryStart
+    \resumeEntryMyOneLineTSDL
+      {Apple \faApple}{May. 2021 -- Aug. 2021}
+      {GPU System Software Engineer Intern}{Pittsburgh, PA}
+    \resumeItemListStart
+      \resumeItem
+        {Established a \mycolortext{color transform pipeline} for \mycolortext{virtual graphics} within the hypervisor, where render requests in guest OS would be captured and then be passed along the pipeline to physical graphics on host}
+      \resumeItem
+        {Optimized internal APIs to reduce the overhead of data transfer and developed GPU shaders that efficiently applied color transforms to pixel data, powering \mycolortext{visual accessibility features}}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \vspace{-6pt}
+
+  \resumeEntryStart
+    \resumeEntryMyOneLineTSDL
+      {Autodesk}{Sept. 2019 -- Feb. 2020}
+      {Software Engineer Intern}{Shanghai, China}
+    \resumeItemListStart
+      \resumeItem{Replaced MSVC with \mycolortext{LLVM compiler toolchain} for AutoCAD on Windows (consisting of \mycolortext{100k}-level lines of C/C++ codes)}
+      \resumeItem{Upgraded internal \mycolortext{CI/CD platform} to enable \mycolortext{test automation} on AutoCAD builds generated by LLVM on Windows}
+      \resumeItem{Developed \mycolortext{Clang plugins} to analyze dependency of source files and detect redundant codes}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\section{\faCubes}{Selected Projects}
+
+  \resumeEntryStart
+    \resumeEntryMyTD
+      {Parallel Algorithm for Fast Distributed Training}{PyTorch, RPC}{}
+    \resumeItemListStart
+      \resumeItem
+        {Proposed a \mycolortext{synchronous mechanism} (i.e. LOSP) based on Parameter Server (PS) to \mycolortext{accelerate neural network training} on a \mycolortext{distributed GPU cluster}, where computation and communication processes were overlapped to reduce synchronization overhead}
+      \resumeItem
+        {Implemented LOSP and other distributed training algorithms, and developed scripts to automatically conduct comparison experiments on different neural network architectures (CNN, AlexNet, LSTM, ResNet, and DenseNet) in various cluster size (4/8/16) and hyperparameter settings}
+      \resumeItem
+        {Achieved \mycolortext{\textasciitilde 50\% shorter convergence time} in most cases (with same or better performance), \mycolortext{\textasciitilde 0 GPU idle time}, and significantly less communication cost, with Local-SGD as the baseline algorithm}
+      \resumeItem
+        {Paper published: H. Wang, Z. Qu, S. Guo, N. Wang, R. Li and W. Zhuang, ”LOSP: Overlap Synchronization Parallel With Local Compensation for Fast Distributed Training,” in IEEE Journal on Selected Areas in Communications, vol. 39, no. 8, pp. 2541-2557, Aug. 2021, doi: 10.1109/JSAC.2021.3087272.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \vspace{-6pt}
+  
+  \resumeEntryStart
+    \resumeEntryMyTD
+      {Cloud Computing Projects}{MapReduce, Spark, MySQL, HBase, Docker, Kubernetes}{}
+    \resumeItemListStart
+      \resumeItem
+        {Established \mycolortext{ETL pipelines} to process \mycolortext{1.4TB} tweets' data and analyze similarity between users based on users' interactions}
+      \resumeItem
+        {Designed and constructed \mycolortext{high-performing, load-balanced, and fault tolerant cloud services} that supported block chain verification requests and complex DB queries, with limited budget and strict performance requirements}
+      \resumeItem
+        {Improved throughput on HBase by \mycolortext{2531.33\%}, by optimizing rowkey's design; Achieved \mycolortext{6.595x} higher throughput on MySQL by optimizing tables' design to reduce data redundancy and customizing SQL statements to minimize query overhead}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \vspace{-6pt}
+
+  \resumeEntryStart
+    \resumeEntryMyTD
+      {Computer System and Infrastructure Practices}{C, C++, Golang, Node.js}{}
+    \resumeItemListStart
+        \resumeItem
+          {\textbf{Real-time OS Kernel} - a basic kernel with multi-threading, preemption, context switching, priority schedule, and mutex}
+        \resumeItem
+          {\textbf{Raft Consensus Algorithm} - one implemented with Golang, supporting arbitrary binary data}
+        \resumeItem
+          {\textbf{Distributed File System} - one implemented with read-write locks and supporting single writer and multiple readers}
+        \resumeItem
+          {\textbf{Compiler} - a series of software that supported: \newline 
+          1. creating configurable LL(1) or SLR(1) parser based on input (i.e. \mycolortext{parser generator}) \newline 
+          2. parsing a C-like language (supporting function calls) \newline 
+          3. applying \mycolortext{processor-independent optimizations} and \mycolortext{peephole optimization} on intermediate representations \newline 
+          4. generating executable assembly codes on x86 processors}
+        \resumeItem
+          {\textbf{Micro-Computer on FPGA} - a micro-computer with hardware and software components, including: \newline
+          1. a MIPS32 CPU with \mycolortext{5-stage pipeline} and \mycolortext{cache}, and Coprocessor 0 \newline
+          2. controllers and adapters for DDR2 SDRAM (main memory), SD card (external storage), Ethernet card, and VGA screen \newline
+          3. a game where players used another computer (connected by cable) to control the game via \mycolortext{Ethernet frames} \newline
+          4. a bootloader to initialize peripherals and load the game from SD card to main memory}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\section{\faMagic}{Skills}
+
+ \vspace{-3pt}
+
+ \resumeEntryStart
+  \item[]
+  \resumeItemListStart
+    \resumeItem
+      {\textbf{Languages}\hspace{79.2pt}C, C++, Objective-C, Golang, Java, Scala, Python, R, JavaScript, TypeScript, Verilog}
+    \resumeItem
+      {\textbf{System Software}\hspace{54pt}CMake, Make, LLVM, GDB, perf, Valgrind}
+    \resumeItem
+      {\textbf{Web Full Stack}\hspace{64.1pt}React, Node.js, Gofiber, Vert.x, Django, Nginx, Kafka, MySQL, NoSQL, Redis, Docker, Kubernetes}
+    \resumeItem
+      {\textbf{Big Data \& Machine Learning} \hspace{3.9pt}Terraform, Spark, MapReduce, HBase, HDFS, pandas, NumPy, scikit-learn, PyTorch, TensorFlow}
+    \resumeItemListEnd
+ \resumeEntryEnd
+
+\end{document}
