@@ -148,6 +148,13 @@
     \end{tabularx}\vspace{-6pt}
 }
 
+\newcommand{\resumeEntryMyEduOneLine}[5]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.995\textwidth}{X@{\hspace{60pt}}r}
+      {\textbf{\color{primary}#1} $|$ \color{accent}\small\emph{#2}  $|$ \color{accent}\small\emph{#3}} & 
+      {\firabook\color{accent}\small#4 $|$ \textit{\color{accent}\small#5}} \\
+    \end{tabularx}\vspace{-6pt}
+}
 
 % Entry with title and date(s)
 \newcommand{\resumeEntryTD}[2]{
@@ -222,9 +229,9 @@
 \section{\faLeanpub}{Education} % faGraduationCap faBook faUniversity faLeanpub
 
   \resumeEntryStart
-    \resumeEntryMyOneLineTSDL
-      {Carnegie Mellon University}{Aug. 2020 -- Dec. 2021}
-      {M.S. in Information Networking; GPA: 3.50/4.00}{Pittsburgh, PA}
+    \resumeEntryMyEduOneLine
+      {Carnegie Mellon University}{M.S. in Information Networking}{GPA: 3.50/4.00}
+      {Pittsburgh, PA}{Aug. 2020 -- Dec. 2021}
       \resumeItemListStart
         \resumeItem 
           {Teaching Assistant for course 17-681 Java for Application Programmers in Spring 2021 and Fall 2021}
@@ -234,9 +241,9 @@
   \vspace{-6pt}
   
   \resumeEntryStart
-    \resumeEntryMyOneLineTSDL
-      {Tongji University}{Sept. 2015 -- Jul. 2020}
-      {B.E. in Computer Science and Technology; GPA: 91.37/100}{Shanghai, China}
+    \resumeEntryMyEduOneLine
+      {Tongji University}{B.E. in Computer Science and Technology}{GPA: 91.37/100}
+      {Shanghai, China}{Sept. 2015 -- Jul. 2020}
       \resumeItemListStart
         \resumeItem 
           {Graduated with Honor: \mycolortext{Shanghai Outstanding Graduate Award}}
